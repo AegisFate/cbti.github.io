@@ -6,9 +6,8 @@
     <meta http-equiv="Cache-Control" content="max-age=86400">
     <title>漕河泾开发者人格测评</title>
     
-    <!-- 字体预连接与加载 -->
     <link rel="preconnect" href="https://fonts.loli.net" crossorigin>
-    <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@700&display=swap">
+    <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
     <link rel="preload" href="./fonts/LanaPixel.woff2?v=2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="./images/title.png" as="image">
     <link rel="preload" href="./images/top-deco.png" as="image">
@@ -80,7 +79,18 @@
         .pixel-btn:hover { background-color: var(--c-btn-hover); transform: scale(0.98); }
         .pixel-btn:active { background-color: rgba(0,0,0,0.8); transform: translateY(3px); }
 
-        .copyright { position: absolute; bottom: 2vh; left: 0; width: 100%; text-align: center; color: var(--c-primary); font-size: 24px; letter-spacing: 0.5px; z-index: 3; pointer-events: none; }
+        .copyright { 
+            position: absolute; 
+            bottom: max(2vh, env(safe-area-inset-bottom)); 
+            left: 0; 
+            width: 100%; 
+            text-align: center; 
+            color: var(--c-primary); 
+            font-size: 24px; 
+            letter-spacing: 0.5px; 
+            z-index: 3; 
+            pointer-events: none; 
+        }
         .copyright span { font-style: italic; }
 
         .modal-base { background-color: var(--c-modal-bg); border: 5px solid var(--c-primary); border-radius: 28px; color: var(--c-text-light); font-family: inherit; }
@@ -278,36 +288,6 @@
             .result-dialog-wrapper { top: 35%; left: -2%; width: 45%; }
         }
 
-        @media (max-width: 768px) {
-            .deco-wrapper.bottom { bottom: 0; }
-            .deco-inner { min-width: 100%; }
-            .copyright { 
-                bottom: calc(1vh + env(safe-area-inset-bottom)); 
-                font-size: 16px; 
-                padding: 0 10px;
-            }
-            .button-group {
-                top: auto;
-                bottom: calc(12vh + env(safe-area-inset-bottom));
-                transform: translate(-50%, 0);
-            }
-            .screen-gif { bottom: 32%; width: 12%; }
-            .quiz-modal {
-                position: fixed;
-                top: 2vh;
-                left: 2.5vw;
-                transform: none;
-                width: 95vw;
-                height: 96dvh;
-                max-height: none;
-                padding: 20px;
-                padding-bottom: calc(20px + env(safe-area-inset-bottom));
-            }
-            .result-modal {
-                padding-bottom: env(safe-area-inset-bottom);
-            }
-        }
-
         @media (max-width: 680px) {
             .options-container.likert .option-item { min-width: 80px; font-size: 21px; padding: 10px 8px; }
             .quiz-modal { padding: 20px 30px 20px 20px; }
@@ -324,10 +304,10 @@
 </head>
 <body>
     <div class="home-container" id="homeContainer">
-        <div class="deco-wrapper top"><div class="deco-inner"><img src="./images/top-deco.png" alt="" class="deco-img" loading="eager"></div></div>
-        <div class="deco-wrapper bottom"><div class="deco-inner"><img src="./images/bottom-deco.png" alt="" class="deco-img" loading="eager"><img src="./images/animation.gif" alt="" class="screen-gif" id="screenGif" loading="eager"></div></div>
+        <div class="deco-wrapper top"><div class="deco-inner"><img src="./images/top-deco.png" alt="" class="deco-img"></div></div>
+        <div class="deco-wrapper bottom"><div class="deco-inner"><img src="./images/bottom-deco.png" alt="" class="deco-img"><img src="./images/animation.gif" alt="" class="screen-gif" id="screenGif"></div></div>
 
-        <img src="./images/title.png" alt="标题" class="title-image" id="homeTitle" loading="eager">
+        <img src="./images/title.png" alt="标题" class="title-image" id="homeTitle">
         <div class="button-group" id="homeButtons">
             <div class="pixel-btn" id="start-btn">快端上来吧</div>
             <div class="pixel-btn" id="credits-btn">哪个神人做的</div>
@@ -346,7 +326,7 @@
         </div>
 
         <div class="transition-overlay" id="transitionOverlay">
-            <img class="transition-gif" id="transitionGif" src="" alt="过渡动画" loading="lazy">
+            <img class="transition-gif" id="transitionGif" src="" alt="过渡动画">
         </div>
 
         <div class="result-modal custom-scroll" id="resultModal">
@@ -761,4 +741,3 @@
 </body>
 </html>
 
-我找人优化了一下代码，你过一遍
