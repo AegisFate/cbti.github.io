@@ -293,14 +293,49 @@
         }
 
         @media (max-width: 680px) {
-            .options-container.likert .option-item { min-width: 80px; font-size: 21px; padding: 10px 8px; }
-            .quiz-modal { padding: 20px 30px 20px 20px; }
-            .progress-badge { width: 160px; height: 50px; font-size: 36px; }
-            .question-text { font-size: 32px; }
-            .nav-btn { font-size: 28px; height: 55px; }
-            .copyright { font-size: 16px; }
-            .option-item { font-size: 21px; }
-        }
+    /* 保持背景原始裁切效果（不缩放图片） */
+    .deco-wrapper.bottom { bottom: -120px; }
+    .deco-inner { min-width: 1920px; }
+
+    /* 按钮组上移，留出空间给版权声明 */
+    .button-group {
+        top: auto;
+        bottom: calc(12vh + env(safe-area-inset-bottom));
+        transform: translate(-50%, 0);
+    }
+
+    /* 版权声明紧贴底部，通过安全区内边距避免被系统底框遮挡 */
+    .copyright {
+        bottom: 0;
+        padding-bottom: env(safe-area-inset-bottom);
+        font-size: 16px;
+    }
+
+    /* 其他原有移动端样式保持不变 */
+    .options-container.likert .option-item {
+        min-width: 80px;
+        font-size: 21px;
+        padding: 10px 8px;
+    }
+    .quiz-modal {
+        padding: 20px 30px 20px 20px;
+    }
+    .progress-badge {
+        width: 160px;
+        height: 50px;
+        font-size: 36px;
+    }
+    .question-text {
+        font-size: 32px;
+    }
+    .nav-btn {
+        font-size: 28px;
+        height: 55px;
+    }
+    .option-item {
+        font-size: 21px;
+    }
+}
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
