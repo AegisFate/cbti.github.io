@@ -621,12 +621,6 @@
                 this.updateNavButtons();
                 this.el.quiz.modal.scrollTop = 0;
                 this.state.questionStartTs = Date.now();
-                track('question_view', {
-                    q_id: q.id,
-                    q_index: currentIndex,
-                    q_type: q.type,
-                    has_previous_answer: answers[currentIndex] !== null,
-                });
             }
 
             selectOption(idx) {
@@ -652,7 +646,6 @@
 
             handlePrev() {
                 if (this.state.currentIndex > 0) {
-                    track('quiz_nav', { direction: 'prev', from_index: this.state.currentIndex });
                     this.state.currentIndex--;
                     this.renderQuestion();
                 }
@@ -660,7 +653,6 @@
             handleNext() {
                 if (this.state.answers[this.state.currentIndex] === null) return;
                 if (this.state.currentIndex < this.totalQuestions - 1) {
-                    track('quiz_nav', { direction: 'next', from_index: this.state.currentIndex });
                     this.state.currentIndex++;
                     this.renderQuestion();
                 }
